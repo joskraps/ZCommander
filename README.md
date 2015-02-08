@@ -7,7 +7,9 @@ ZCommander
 Overview
 --------
 ZCommander allows your to create simulated load on your system or to load static/random data into an application. Each zombie has a task, and that task can be static or contain dynamic data. A zombie is configured to execute a task in seconds, and each zombie can be multiplied. This can be used to perform load or capacity planning.
-Configuration information is stored in XML and is passed to the Zombie server when starting up. -Tracey Test
+Configuration information is stored in XML and is passed to the Zombie server when starting up.
+
+This project is in it's very early stages and needs some fine tuning.
 
 Configuration
 ---------
