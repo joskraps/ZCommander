@@ -1,0 +1,45 @@
+extends ../../layout
+
+block append head
+    script.
+        $(function(){
+            $(".factoryDelete").click(function(data){
+                var factoryID = data.target.getAttribute('data-id');
+                var result = confirm("Are you sure you would like to delete this factory?(Id = " + factoryID);
+                if (result==true) {
+                    var response = $.post( "/configuration/factories/deletefactory/" + factoryID)
+                      .done(function() {
+                        alert( "Record removed successfully" );
+                        location.reload();
+                      })
+                      .fail(function() {
+                        alert( "An error occured :(" );
+                      })
+                      .always(function() {
+                    });
+                }
+            });
+        })
+ 
+block content
+  .centeredBody
+    table.tg(style="margin-top:15px")
+      thead
+        tr
+            th 
+                button(onclick="location.href='/configuration/factories/newfactory'") New Factory
+            th ID
+            th Type
+            th Name
+            th Description 
+      tbody
+        each factory, i in factorylist
+          tr
+            td
+              button(onclick="location.href='/configuration/factories/editfactory/" + factory._id + "'") Edit
+              button.factoryDelete(data-id="" + factory._id) Delete
+            td= factory._id  
+            td= factory.type
+            td= factory.name
+            td= factory.description
+

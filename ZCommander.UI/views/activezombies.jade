@@ -1,0 +1,27 @@
+extends layout
+
+block append head 
+    script(src="/socket.io/socket.io.js")
+    script(src="script.js")
+
+    script.
+        window.addEventListener('load', function(){
+            var socket = io.connect();
+
+            console.log("Loaded");
+            $('#test').click(function(){
+              socket.emit('chat message', $('#m').val());
+              $('#m').val('');
+              return false;
+            })
+
+            socket.on('boom', function(msg){
+              $('#messages').append($('<li>').text(msg));
+            });
+        })    
+    
+block content
+    input#m
+    button#test Send
+    ul#messages
+        

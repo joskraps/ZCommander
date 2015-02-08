@@ -1,0 +1,56 @@
+﻿<ZCommander>
+  <ConnectionStrings Source="Data Source=.\ct;Initial Catalog=CT_Dev;uid=CareTrackerUser;pwd=CareTracker_999" />
+  <Logging Enabled="True" TracePath="C:\boom.log" ConnectionString="Data Source=.\ct;Initial Catalog=ZCommander;uid=CareTrackerUser;pwd=CareTracker_999" />
+  <MacroPatterns DataFactorySymbol="{!" DataFactoryPattern="(\{!.*?!\})" AssemblySymbol="#!" AssemblyPattern="(\#!.*?!\#)"  StaticValueSymbol="^!" StaticValuePattern="(\^!.*?!\^)" TaskVariableSymbol="@!" TaskVariablePattern="(\@!.*?!\@)" />
+  <Zombies>
+    <Zombie Name="Test REST" Multiplier="20" Frequency="1">
+      <Tasks>
+        <Task Name="Test REST" Type="WEBSERVICE" Sequence="1">
+          <URL ContentType="text/JSON" ContentLength="0" Verb="GET"><![CDATA[http://whitebox-spa.tdpi.com/spa/service/Intelligence/Situation/PredefinedSituationList?filterEnum=1&status=1&staff=&resident=&src=-1&sitstdate=2014-03-24T18:25:00.000Z&sitenddate=2014-05-23T18:25:00.000Z&acstdate=2014-03-24T18:25:00.000Z&acenddate=2014-05-23T18:25:00.000Z&title=&facilityId=0&ruleName=]]></URL>
+          <Authentication Type="None">
+            <Credentials UserName="js022742" Password="test" />
+          </Authentication>
+          <Cookies>
+            <Cookie Domain="http://whitebox-spa.tdpi.com/" Name=".VISIONLOGIN">
+              <Value>6921DA06F71FB54993CFCED52056467EA67919C978210B68D67C93827D38E11453C2097A4CDB60ECC55D012469D091F392E1543322E8679BF2C8911C425B925272E5FB993B8B4F99857482C96B70C6B4863DB488B0FAAEAFF1476E3F711FA6B6B2BF3A300EF3162B56E92F87489DD93DBA6B6EFEF0FEAF8F8782B12C716FE203D1508CC9D97CE7C2F1DC316051212548EB638407EAF5D24639A0B8C6ECA075491151482F0CD9A1F2DF86ED8EEDC5708A593C6E4CA0AF116272A2976ED536C812307E13B84C2C5C38116E640FC1753976624EFF8C</Value>
+            </Cookie>
+          </Cookies>
+          <Replacements />
+        </Task>
+      </Tasks>
+    </Zombie>
+  </Zombies>
+  <Factories>
+    <Factory Name="ResidentFactory" Type="SQL" Refresh="True" RefreshRate="30">
+      <ConnectionString>{PARENT}</ConnectionString>
+      <FillQuery>select re_recnum,re_first,re_last from dbo.resident</FillQuery>
+    </Factory>
+    <Factory Name="ResidentJSON" Type="JSON" Refresh="False" RefreshRate="30">
+      <LoadPath>C:\Git\ZCommander\master\ZCommander.TestConsole\SampleJSONFiles\ResidentJSON.json</LoadPath>
+    </Factory>
+    <TestFactory Name="ResidentJSON" Type="JSON" Refresh="False" RefreshRate="30">
+      <LoadPath>http://testsite.com/residentlist</LoadPath>
+    </TestFactory>
+  </Factories>
+  <Assemblies>
+    <Assembly Name="UploadedObservation" Object="ResourceEnterprise.Containers.UploadedObservation" Path="C:\SVN\Dev\Integration\References\ResourceEnterprise.Shared.dll">
+      <Properties>
+        <Property>
+          <Name>DateTime</Name>
+          <Type>DateTimeHelper</Type>
+          <Value>1  month ago</Value>
+        </Property>
+        <Property>
+          <Name>DateTime</Name>
+          <Type>DateTimeHelper</Type>
+          <Value>1  month from now</Value>
+        </Property>
+        <Property>
+          <Name>ResidentRecnum</Name>
+          <Type>Int32</Type>
+          <Value>{![ResidentJSON].[0].[Recnum].[RAND]!}</Value>
+        </Property>
+      </Properties>
+    </Assembly>
+  </Assemblies>
+</ZCommander>

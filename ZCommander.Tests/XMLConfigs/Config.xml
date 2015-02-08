@@ -1,0 +1,73 @@
+﻿<ZCommander>
+  <ConnectionStrings Source="Data Source=.\ct;Initial Catalog=CT_Dev;uid=CareTrackerUser;pwd=CareTracker_999" />
+  <Logging Enabled="True" TracePath="C:\boom.log" ConnectionString="Data Source=.\ct;Initial Catalog=ZCommander;uid=CareTrackerUser;pwd=CareTracker_999" />
+  <MacroPatterns DataFactorySymbol="{!" DataFactoryPattern="(\{!.*?!\})" AssemblySymbol="#!" AssemblyPattern="(\#!.*?!\#)"  StaticValueSymbol="^!" StaticValuePattern="(\^!.*?!\^)" TaskVariableSymbol="@!" TaskVariablePattern="(\@!.*?!\@)" />
+  <Zombies>
+    <Zombie Name="Test Zombie" Multiplier="1" Frequency="2">
+      <TaskVariables>
+        <Variable Type="Static" Reset="True">
+          <Name>Boom_Guid</Name>
+          <Value>^![NEWGUID]!^</Value>
+        </Variable>
+        <Variable Type="Static" Reset="True">
+          <Name>Boom_Resident</Name>
+          <Value>{![ResidentFactory].[0].[re_recnum].[RAND]!}</Value>
+        </Variable>
+      </TaskVariables>
+      <Tasks>
+        <Task Name="Test Script1" Type="SQL" Sequence="1">
+          <SQLStatements>
+            <Statement ConnectionString="{PARENT}" OutputType="None">
+              <Text>exec sp_executesql N'Insert into OutboundQueue (GUID,DateTime,Type,Data) VALUES (''@![Boom_Guid].[-1]!@'',''^![DATETIME].[NOW].[NONE]!^'',''1'',@Image1)',N'@Image1 image',@Image1=0x0001000000FFFFFFFF01000000000000000C02000000525265736F75726365456E74657270726973652E5368617265642C2056657273696F6E3D392E382E302E3131362C2043756C747572653D6E65757472616C2C205075626C69634B6579546F6B656E3D6E756C6C0501000000315265736F75726365456E74657270726973652E436F6E7461696E6572732E55706C6F616465644F62736572766174696F6E140000000F5F5265736964656E745265636E756D0C5F53746166665265636E756D0A5F5374616666477569640E5F4D616368696E655265636E756D0D5F5365726965735265636E756D145F5363686564756C65437573746F6D47726F75700F5F5363686564756C655265636E756D185F4672657175656E63795363686564756C655265636E756D175F5363686564756C654672657175656E637947726F75700D5F5475746F7269616C4D6F6465105F506572666F726D616E63654D6F64650A5F4C617465456E747279105F4F62736572766174696F6E446174610B5F4D73675F5265636E756D0C5F4D73674F5F5265636E756D095F4461746554696D650D5F53796E634461746554696D65065F4E6F746573115F4F62736572766174696F6E47726F7570185F43757272656E744B696F736B466163696C6974795F49440000010000000101010000040101010000040003080808080801012D5265736F75726365456E74657270726973652E436F6E7461696E6572732E4C617465456E7472794F626A656374020000000D0D375265736F75726365456E74657270726973652E436F6E7461696E6572732E4F62736572766174696F6E4E6F7465436F6C6C656374696F6E02000000080C53797374656D2E496E74333202000000990100006C01000006030000002437414635333834462D354442382D344245432D393534392D33304441304437374635353901000000FF0000000000000006040000000009040000000904000000000009050000000606000000625B4F42532C3835392C323136325D5B4F42532C3836372C323137395D5B4F42532C3837322C323139345D5B4F42532C3837302C323139305D5B4F42532C3836382C323138335D5B4F42532C3836392C323138385D5B4F42532C3837312C323139325D09040000000A6DA179A99D3CD1886DA94F92C73CD1480A0000000008080000000005050000002D5265736F75726365456E74657270726973652E436F6E7461696E6572732E4C617465456E7472794F626A65637404000000055F49734F6E095F4C61746544617465085F436F6D6D656E74065F537461666600000100010D08020000000000000000000000000904000000000000000B</Text>
+              <OutputList />
+            </Statement>
+          </SQLStatements>
+          <Replacements>
+            <Replacement Global="False">
+              <MatchPattern>(?&lt;=Image1(.*)=.*)(\w)+</MatchPattern>
+              <ReplaceMethod>EditObjectFromBinary</ReplaceMethod>
+              <ReplaceValue>0x#![UploadedObservation].[TOBINARY]!#</ReplaceValue>
+            </Replacement>
+          </Replacements>
+        </Task>
+        <Task Name="Test Script2" Type="SQL" Sequence="3">
+          <SQLStatements>
+            <Statement ConnectionString="{PARENT}" OutputType="None">
+              <Text>delete from dbo.inboundqueue where guid = '@![Boom_Guid].[-1]!@'</Text>
+              <OutputList />
+            </Statement>
+          </SQLStatements>
+          <Replacements />
+        </Task>
+      </Tasks>
+    </Zombie>
+  </Zombies>
+  <Factories>
+    <Factory Name="ResidentFactory" Type="SQL" Refresh="True" RefreshRate="30">
+      <ConnectionString>{PARENT}</ConnectionString>
+      <FillQuery>select re_recnum,re_first,re_last from dbo.resident</FillQuery>
+    </Factory>
+    <Factory Name="ResidentJSON" Type="JSON" Refresh="False" RefreshRate="30">
+      <LoadPath>C:\Git\ZCommander\master\ZCommander.TestConsole\SampleJSONFiles\ResidentJSON.json</LoadPath>
+    </Factory>
+    <TestFactory Name="ResidentJSON" Type="JSON" Refresh="False" RefreshRate="30">
+      <LoadPath>http://testsite.com/residentlist</LoadPath>
+    </TestFactory>
+  </Factories>
+  <Assemblies>
+    <Assembly Name="UploadedObservation" Object="ResourceEnterprise.Containers.UploadedObservation" Path="C:\SVN\Dev\Integration\References\ResourceEnterprise.Shared.dll">
+      <Properties>
+        <Property>
+          <Name>DateTime</Name>
+          <Type>DateTime</Type>
+          <Value>^![DATETIME].[NOW].[NONE]!^</Value>
+        </Property>
+        <Property>
+          <Name>ResidentRecnum</Name>
+          <Type>Int32</Type>
+          <Value>{![ResidentFactory].[0].[re_recnum].[RAND]!}</Value>
+        </Property>
+      </Properties>
+    </Assembly>
+  </Assemblies>
+</ZCommander>

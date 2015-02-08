@@ -1,0 +1,21 @@
+extends ../../layout
+
+block content
+    form(name="editfactory",method="post",action="/configuration/factories/savefactory/" + factory._id,style='white-space:pre;')
+        fieldset
+          label(for='name') Name: 
+          input.input(type="text", placeholder="name", name="name", value=factory.name)
+        fieldset
+          label(for='type') Type: 
+          input.input(type="text", placeholder="type", name="type", value=factory.type)           
+        fieldset
+          label(for='description') Description: 
+          textarea.input(type="text", placeholder="description", name="description")
+            =factory.description
+        fieldset
+          label(for='configuration') Configuration: 
+          textarea.input(type="text", placeholder="configuration", name="configuration")
+            =factory.configuration
+        button(type="submit") Save
+        button(type="reset") Reset
+        button(type="button",onclick="location.href='/configuration/factories/factorylist'") Cancel

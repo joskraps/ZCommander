@@ -1,0 +1,11 @@
+extends ../../layout
+
+block content
+    form.userForm(name="addtask",method="post",action="/addtask",style='white-space:pre;')
+        input#inputTaskName(type="text", placeholder="name", name="name")
+        input#inputTaskDescription(type="text", placeholder="description", name="description")
+        input#inputTaskConfiguration(type="text", placeholder="configuration", name="configuration")
+        input#inputTaskType(type="text", placeholder="type", name="type")
+        button(type="submit") Save
+        button(type="reset") Reset
+        button(type="button",onclick="location.href='/configuration/tasks/tasklist'") Cancel

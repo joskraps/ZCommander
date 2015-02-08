@@ -1,0 +1,20 @@
+extends ../../layout
+
+block content
+    form(name="edittask",method="post",action="/configuration/tasks/savetask/" + task._id,style='white-space:pre;')
+        fieldset
+          label(for='name') Name: 
+          input.input(type="text", placeholder="name", name="name", value=task.name)
+        fieldset
+          label(for='type') Type: 
+          input.input(type="text", placeholder="type", name="type", value=task.type)           
+        fieldset
+          label(for='description') Description: 
+          textarea.input(type="text", placeholder="description", name="description")
+            =task.description
+        fieldset
+          label(for='configuration') Configuration: 
+          textarea.input(type="text", placeholder="configuration", name="configuration")
+            =task.configuration
+        button(type="submit") Save
+        button(type="reset") Reset   

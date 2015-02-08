@@ -1,0 +1,60 @@
+﻿<ZCommander>
+  <ConnectionStrings Source="Data Source=dev-sql\ct;Initial Catalog=CT_Dev1;uid=CareTrackerUser;pwd=CareTracker_999" />
+  <Logging Enabled="True" TracePath="C:\boom.log" ConnectionString="Data Source=.\ct;Initial Catalog=ZCommander;uid=CareTrackerUser;pwd=CareTracker_999" />
+  <MacroPatterns DataFactorySymbol="{!" DataFactoryPattern="(\{!.*?!\})" AssemblySymbol="#!" AssemblyPattern="(\#!.*?!\#)"  StaticValueSymbol="^!" StaticValuePattern="(\^!.*?!\^)" TaskVariableSymbol="@!" TaskVariablePattern="(\@!.*?!\@)" />
+  <Zombies>
+    <Zombie Name="Test Zombie" Multiplier="1" Frequency="2">
+      <TaskVariables>
+        <Variable Type="Static" Reset="True">
+          <Name>Boom_Guid</Name>
+          <Value>^![NEWGUID]!^</Value>
+        </Variable>
+      </TaskVariables>
+      <Tasks>
+        <Task Name="Test Script1" Type="SQL" Sequence="1">
+          <SQLStatements>
+            <Statement ConnectionString="{PARENT}" OutputType="None">
+              <Text>select '^![DATETIMEHELPER].[2 days from now].[{0:MM/dd/yy}]!^','{![ResidentFactory].[0].[re_first].[RAND]!}','{![ResidentFactory].[0].[re_last].[RAND]!}','@![Boom_Guid].[-1]!@' from resident</Text>
+              <OutputList />
+            </Statement>
+          </SQLStatements>
+          <Replacements>
+            <Replacement Global="False">
+              <MatchPattern>select </MatchPattern>
+              <ReplaceMethod>Text</ReplaceMethod>
+              <ReplaceValue>select '^![STRING].[FILL].[W].[1-50]!^',</ReplaceValue>
+            </Replacement>
+          </Replacements>
+        </Task>
+      </Tasks>
+    </Zombie>
+  </Zombies>
+  <Factories>
+    <Factory Name="ResidentFactory" Type="SQL" Refresh="True" RefreshRate="30">
+      <ConnectionString>{PARENT}</ConnectionString>
+      <FillQuery>select re_recnum,re_first,re_last from dbo.resident</FillQuery>
+    </Factory>
+    <Factory Name="ResidentJSON" Type="JSON" Refresh="False" RefreshRate="30">
+      <LoadPath>C:\Git\ZCommander\master\ZCommander.TestConsole\SampleJSONFiles\ResidentJSON.json</LoadPath>
+    </Factory>
+    <TestFactory Name="ResidentJSON" Type="JSON" Refresh="False" RefreshRate="30">
+      <LoadPath>http://testsite.com/residentlist</LoadPath>
+    </TestFactory>
+  </Factories>
+  <Assemblies>
+    <Assembly Name="UploadedObservation" Object="ResourceEnterprise.Containers.UploadedObservation" Path="C:\SVN\Dev\Integration\References\ResourceEnterprise.Shared.dll">
+      <Properties>
+        <Property>
+          <Name>DateTime</Name>
+          <Type>DateTime</Type>
+          <Value>^![DATETIME].[NOW].[NONE]!^</Value>
+        </Property>
+        <Property>
+          <Name>ResidentRecnum</Name>
+          <Type>Int32</Type>
+          <Value>{![ResidentFactory].[0].[re_recnum].[RAND]!}</Value>
+        </Property>
+      </Properties>
+    </Assembly>
+  </Assemblies>
+</ZCommander>

@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title #{title} - ZCommander
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Metrophobic')
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    block head
+  body
+    header
+      h1 ZCommander
+      ul.nav
+        li.button
+          a(href="/") Home
+        li.button
+          a(href="/configuration") Configuration
+        li.button
+          a(href="/activezombies") Servers           
+    .container
+      .main-content
+        block content
+    footer
+      p Running on node with <a href="#">Express</a>, <a href="#">Jade</a> and <a href="#">Stylus</a>.....boom

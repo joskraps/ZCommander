@@ -1,0 +1,32 @@
+extends ../../layout
+
+block content
+  //
+    .taskHeader SQL (Add)
+      each task, i in tasklist
+        if task.type == 'SQL'
+          include task
+    .taskHeader Web Service (Add)
+      each task, i in tasklist
+        if task.type == 'WEBSERVICE'
+          include task
+  .centeredBody
+    button Add
+    table.tg
+      thead
+        tr
+            th
+            th ID
+            th Type
+            th Name
+            th Description 
+      tbody
+        each task, i in tasklist
+          tr
+            td
+              a(href='/configuration/tasks/edittask/'+ task._id + '') Edit | 
+              a(href='/deletetask/'+ task._id + '') Delete
+            td= task._id  
+            td= task.type
+            td= task.name
+            td= task.description

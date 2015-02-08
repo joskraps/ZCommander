@@ -1,0 +1,431 @@
+/*
+ * Import nib
+ */
+/*
+ * Grab a custom font from Google
+ */
+@import url("http://fonts.googleapis.com/css?family=Quicksand");
+/*
+ * Nib provides a CSS reset
+ */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+  color: #000;
+  background: #fff;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+/*
+ * Store the main color and
+ * background color as variables
+ */
+body {
+  font-family: 'Segoe UI Light', 'Segoe UI', 'Open sans', Arial, Sans;
+  background-color: #faf9f0;
+  color: #444;
+}
+.centeredBody {
+  width: 1000px;
+  margin: auto auto;
+}
+header {
+  font-family: 'Segoe UI Light', 'Segoe UI', 'Open sans', Arial, Sans;
+  width: 100%;
+  padding-top: 30px;
+  color: #fff;
+  font-size: 30px;
+  text-align: center;
+  background-color: #454545;
+  border-bottom: 1px solid #303030;
+  text-shadow: 0px -1px 0px #303030;
+}
+header h1 {
+  text-align: center;
+  padding-bottom: 15px;
+}
+.container {
+  width: 800x;
+  margin: auto auto;
+  overflow: hidden;
+}
+.container p {
+  margin-bottom: 20px;
+}
+p {
+  line-height: 1.8;
+}
+footer {
+  width: 800px;
+  margin: 50px auto;
+  border-top: 1px dotted #ccc;
+  padding-top: 5px;
+  font-size: 13px;
+}
+footer p {
+  margin: auto auto;
+  text-align: center;
+}
+.tg {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0px auto;
+}
+.tg thead {
+  border-style: solid;
+  border-width: 1px;
+}
+.tg thead th {
+  background-color: #454545;
+  color: #fff;
+  font-family: 'Segoe UI Light', 'Segoe UI', 'Open sans', Arial, Sans;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 10px 5px;
+  overflow: hidden;
+  word-break: normal;
+}
+.tg tbody td {
+  font-family: 'Segoe UI Light', 'Segoe UI', 'Open sans', Arial, Sans;
+  font-size: 12px;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  color: #000;
+}
+.taskBlock {
+  width: 150px;
+  float: left;
+  border-style: solid;
+  border-width: 1px;
+  margin: 5px;
+  padding: 5px;
+}
+.taskBlock h2 {
+  font-family: 'Segoe UI Light', 'Segoe UI', 'Open sans', Arial, Sans;
+  border-bottom: 1px dotted #ddd;
+  -webkit-border-radius: 2px 2px 0px 0px;
+  border-radius: 2px 2px 0px 0px;
+  margin-bottom: 10px;
+}
+.taskBlock span {
+  font-size: 12px;
+}
+.taskHeader {
+  width: 100%;
+  margin-top: 15px;
+  float: left;
+}
+.configurationMenu {
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.configurationMenu li {
+  margin: 5px;
+}
+.button {
+  display: inline-block;
+  width: 200px;
+  height: 40px;
+  background-color: #373737;
+  color: #fff;
+  text-align: center;
+}
+.button a {
+  display: inline-block;
+  font-size: 15px;
+  padding: 10px;
+  text-decoration: inherit;
+  color: #fff;
+}
+.button a:active {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.nav {
+  font-family: 'Segoe UI Light', 'Segoe UI', 'Open sans', Arial, Sans;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  margin: auto auto;
+}
+/* Metro style forms */
+form {
+  background: #454545;
+  margin: 0 auto;
+  padding: 30px;
+  margin-top: 50px;
+  width: 310px;
+  color: #fff;
+  font-family: 'Segoe UI Light', 'Segoe UI', 'Open sans', Arial, Sans;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+form h2 {
+  font-size: 3em;
+  line-height: 1em;
+  margin: 0 0 0.5em;
+}
+form label {
+  display: block;
+  margin: 0 0 5px;
+  cursor: pointer;
+}
+form input[type="checkbox"] {
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  background: none;
+  border: 1px solid #fff;
+  outline: none;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0 10px 0 0;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+}
+form input[type="checkbox"]:checked:after {
+  display: block;
+  content: '';
+  width: 15px;
+  height: 7px;
+  border-left: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  position: absolute;
+  left: 3px;
+  top: 0px;
+}
+form select,
+form textarea,
+form input[type="text"],
+form input[type="password"],
+form input[type="datetime"],
+form input[type="datetime-local"],
+form input[type="date"],
+form input[type="month"],
+form input[type="time"],
+form input[type="week"],
+form input[type="number"],
+form input[type="email"],
+form input[type="url"],
+form input[type="search"],
+form input[type="tel"],
+form input[type="color"],
+form .uneditable-input {
+  font-size: 14px;
+  border: 0;
+  background: #fff;
+  margin: 0 0 20px;
+  padding: 8px 10px;
+  display: block;
+  width: 290px;
+}
+form select:focus,
+form textarea:focus,
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="datetime"]:focus,
+form input[type="datetime-local"]:focus,
+form input[type="date"]:focus,
+form input[type="month"]:focus,
+form input[type="time"]:focus,
+form input[type="week"]:focus,
+form input[type="number"]:focus,
+form input[type="email"]:focus,
+form input[type="url"]:focus,
+form input[type="search"]:focus,
+form input[type="tel"]:focus,
+form input[type="color"]:focus,
+form .uneditable-input:focus {
+  outline: none;
+  color: #000;
+}
+form select:-moz-placeholder,
+form textarea:-moz-placeholder,
+form input[type="text"]:-moz-placeholder,
+form input[type="password"]:-moz-placeholder,
+form input[type="datetime"]:-moz-placeholder,
+form input[type="datetime-local"]:-moz-placeholder,
+form input[type="date"]:-moz-placeholder,
+form input[type="month"]:-moz-placeholder,
+form input[type="time"]:-moz-placeholder,
+form input[type="week"]:-moz-placeholder,
+form input[type="number"]:-moz-placeholder,
+form input[type="email"]:-moz-placeholder,
+form input[type="url"]:-moz-placeholder,
+form input[type="search"]:-moz-placeholder,
+form input[type="tel"]:-moz-placeholder,
+form input[type="color"]:-moz-placeholder,
+form .uneditable-input:-moz-placeholder,
+form select:-ms-input-placeholder,
+form textarea:-ms-input-placeholder,
+form input[type="text"]:-ms-input-placeholder,
+form input[type="password"]:-ms-input-placeholder,
+form input[type="datetime"]:-ms-input-placeholder,
+form input[type="datetime-local"]:-ms-input-placeholder,
+form input[type="date"]:-ms-input-placeholder,
+form input[type="month"]:-ms-input-placeholder,
+form input[type="time"]:-ms-input-placeholder,
+form input[type="week"]:-ms-input-placeholder,
+form input[type="number"]:-ms-input-placeholder,
+form input[type="email"]:-ms-input-placeholder,
+form input[type="url"]:-ms-input-placeholder,
+form input[type="search"]:-ms-input-placeholder,
+form input[type="tel"]:-ms-input-placeholder,
+form input[type="color"]:-ms-input-placeholder,
+form .uneditable-input:-ms-input-placeholder,
+form select::-webkit-input-placeholder,
+form textarea::-webkit-input-placeholder,
+form input[type="text"]::-webkit-input-placeholder,
+form input[type="password"]::-webkit-input-placeholder,
+form input[type="datetime"]::-webkit-input-placeholder,
+form input[type="datetime-local"]::-webkit-input-placeholder,
+form input[type="date"]::-webkit-input-placeholder,
+form input[type="month"]::-webkit-input-placeholder,
+form input[type="time"]::-webkit-input-placeholder,
+form input[type="week"]::-webkit-input-placeholder,
+form input[type="number"]::-webkit-input-placeholder,
+form input[type="email"]::-webkit-input-placeholder,
+form input[type="url"]::-webkit-input-placeholder,
+form input[type="search"]::-webkit-input-placeholder,
+form input[type="tel"]::-webkit-input-placeholder,
+form input[type="color"]::-webkit-input-placeholder,
+form .uneditable-input::-webkit-input-placeholder {
+  color: #91d37f;
+}
+form button[type="button"],
+form input[type="button"],
+form button[type="reset"],
+form input[type="reset"],
+form button[type="submit"],
+form input[type="submit"] {
+  border: 0;
+  background: #fff;
+  color: #454545;
+  padding: 5px 20px;
+  margin-right: 10px;
+  min-width: 145px;
+}
+form button[type="reset"],
+form input[type="reset"] {
+  background: #fff 10px center no-repeat;
+  margin-right: 0;
+}
+form button[type="submit"],
+form input[type="submit"] {
+  background: #fff 10px center no-repeat;
+}
+form button:hover,
+form input:hover,
+form button:focus,
+form input:focus,
+form button:active,
+form input:active {
+  color: #234b18;
+}
+form-controls {
+  margin: 3em 0 0;
+}

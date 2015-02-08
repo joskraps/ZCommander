@@ -1,0 +1,18 @@
+extends ../../layout
+
+block content
+    form(name="editassembly",method="post",action="/configuration/assemblies/saveassembly/" + assembly._id,style='white-space:pre;')
+        fieldset
+          label(for='name') Name: 
+          input.input(type="text", placeholder="name", name="name", value=assembly.name)         
+        fieldset
+          label(for='description') Description: 
+          textarea.input(type="text", placeholder="description", name="description")
+            =assembly.description
+        fieldset
+          label(for='configuration') Configuration: 
+          textarea.input(type="text", placeholder="configuration", name="configuration")
+            =assembly.configuration
+        button(type="submit") Save
+        button(type="reset") Reset
+        button(type="button",onclick="location.href='/configuration/assemblies/assemblylist'") Cancel

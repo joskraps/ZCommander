@@ -1,0 +1,44 @@
+extends ../../layout
+
+block append head
+    script.
+        $(function(){
+            $(".taskDelete").click(function(data){
+                var taskID = data.target.getAttribute('data-id');
+                var result = confirm("Are you sure you would like to delete this task?(Id = " + taskID);
+                if (result==true) {
+                    var response = $.post( "/configuration/tasks/deletetask/" + factoryID)
+                      .done(function() {
+                        alert( "Record removed successfully" );
+                        location.reload();
+                      })
+                      .fail(function() {
+                        alert( "An error occured :(" );
+                      })
+                      .always(function() {
+                    });
+                }
+            });
+        })
+
+block content
+  .centeredBody
+    table.tg(style="margin-top:15px")
+      thead
+        tr
+            th 
+                button(onclick="location.href='/configuration/tasks/newtask'") New Task
+            th ID
+            th Type
+            th Name
+            th Description 
+      tbody
+        each task, i in tasklist
+          tr
+            td
+              button(onclick="location.href='/configuration/tasks/edittask/" + task._id + "'") Edit
+              button.factoryDelete(data-id="" + task._id) Delete
+            td= task._id  
+            td= task.type
+            td= task.name
+            td= task.description

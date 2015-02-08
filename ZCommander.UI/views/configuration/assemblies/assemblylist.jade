@@ -1,0 +1,45 @@
+extends ../../layout
+
+block append head
+    script.
+        $(function(){
+            $(".assemblyDelete").click(function(data){
+                var assemblyID = data.target.getAttribute('data-id');
+                var result = confirm("Are you sure you would like to delete this assembly?(Id = " + assemblyID);
+                if (result==true) {
+                    var response = $.post( "/configuration/assemblies/deleteassembly/" + assemblyID)
+                      .done(function() {
+                        alert( "Record removed successfully" );
+                        location.reload();
+                      })
+                      .fail(function() {
+                        alert( "An error occured :(" );
+                      })
+                      .always(function() {
+                    });
+                }
+            });
+        })
+ 
+block content
+  .centeredBody
+    table.tg(style="margin-top:15px")
+      thead
+        tr
+            th 
+                button(onclick="location.href='/configuration/assemblies/newassembly'") New assembly
+            th ID
+            th Type
+            th Name
+            th Description 
+      tbody
+        each assembly, i in assemblylist
+          tr
+            td
+              button(onclick="location.href='/configuration/assemblies/editassembly/" + assembly._id + "'") Edit
+              button.assemblyDelete(data-id="" + assembly._id) Delete
+            td= assembly._id  
+            td= assembly.type
+            td= assembly.name
+            td= assembly.description
+

@@ -1,0 +1,16 @@
+extends ../../layout
+
+block content
+    form(name="addassembly",method="post",action="/configuration/assemblies/saveassembly",style='white-space:pre;')
+        fieldset
+          label(for='name') Name: 
+          input.input(type="text", placeholder="name", name="name")         
+        fieldset
+          label(for='description') Description: 
+          textarea.input(type="text", placeholder="description", name="description")
+        fieldset
+          label(for='configuration') Configuration: 
+          textarea.input(type="text", placeholder="configuration", name="configuration")
+        button(type="submit") Save
+        button(type="reset") Reset
+        button(type="button",onclick="location.href='/configuration/assemblies/assemblylist'") Cancel

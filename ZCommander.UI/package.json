@@ -1,0 +1,27 @@
+{
+  "name": "ZCommander.UI",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "main": "app.js",
+  "author": {
+    "name": "JS022742",
+    "email": "joel.sparks@cerner.com"
+  },
+  "dependencies": {
+    "body-parser": "^1.0.2",
+    "cookie-parser": "^1.0.1",
+    "debug": "^0.7.4",
+    "express": "^4.0.0",
+    "jade": "~1.3.0",
+    "mongodb": "*",
+    "monk": "*",
+    "morgan": "^1.0.1",
+    "nib": "*",
+    "socket.io": "^1.0.2",
+    "static-favicon": "^1.0.2",
+    "stylus": "*"
+  }
+}

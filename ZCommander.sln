@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommander.Shared", "ZCommander.Shared\ZCommander.Shared.csproj", "{F1140529-86E3-4130-B47E-F51760F805F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommander.TestConsole", "ZCommander.TestConsole\ZCommander.TestConsole.csproj", "{B32F933D-DB3E-4987-B5AB-62913DF73FF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommander.Business", "ZCommander.Business\ZCommander.Business.csproj", "{6D6BC243-8846-4A4A-8F74-846C0C59B533}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommander.Core", "ZCommander.Core\ZCommander.Core.csproj", "{5A023AE0-B429-4D34-9F6D-64E5CDEEFD3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommander.Tests", "ZCommander.Tests\ZCommander.Tests.csproj", "{F77A2791-030C-4A8D-8053-41F64C3BC8CB}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "ZCommander.UI", "ZCommander.UI\ZCommander.UI.njsproj", "{83AAC9F6-1094-40FC-8CE9-2CA0FE8CCBAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1140529-86E3-4130-B47E-F51760F805F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1140529-86E3-4130-B47E-F51760F805F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1140529-86E3-4130-B47E-F51760F805F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1140529-86E3-4130-B47E-F51760F805F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B32F933D-DB3E-4987-B5AB-62913DF73FF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B32F933D-DB3E-4987-B5AB-62913DF73FF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B32F933D-DB3E-4987-B5AB-62913DF73FF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B32F933D-DB3E-4987-B5AB-62913DF73FF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D6BC243-8846-4A4A-8F74-846C0C59B533}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D6BC243-8846-4A4A-8F74-846C0C59B533}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D6BC243-8846-4A4A-8F74-846C0C59B533}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D6BC243-8846-4A4A-8F74-846C0C59B533}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A023AE0-B429-4D34-9F6D-64E5CDEEFD3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A023AE0-B429-4D34-9F6D-64E5CDEEFD3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A023AE0-B429-4D34-9F6D-64E5CDEEFD3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A023AE0-B429-4D34-9F6D-64E5CDEEFD3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F77A2791-030C-4A8D-8053-41F64C3BC8CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F77A2791-030C-4A8D-8053-41F64C3BC8CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F77A2791-030C-4A8D-8053-41F64C3BC8CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F77A2791-030C-4A8D-8053-41F64C3BC8CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83AAC9F6-1094-40FC-8CE9-2CA0FE8CCBAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83AAC9F6-1094-40FC-8CE9-2CA0FE8CCBAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83AAC9F6-1094-40FC-8CE9-2CA0FE8CCBAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83AAC9F6-1094-40FC-8CE9-2CA0FE8CCBAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
