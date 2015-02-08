@@ -1,4 +1,4 @@
-![ZCommander](http://github.cerner.com/js022742/ZCommander/raw/master/Images/Skull-BrainIcon.png)
+![ZCommander](https://github.com/joskraps/ZCommander/blob/master/Images/Skull-BrainIcon.png)
 
 
 ZCommander
